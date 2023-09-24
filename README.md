@@ -1,4 +1,4 @@
-## Iris_Species_Prediction
+## Iris_Flower_Species_Prediction
 This project focuses on using machine learning to predict the species of Iris flowers based on their petal and sepal measurements.
 
 ## Project Goals
