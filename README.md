@@ -1,5 +1,5 @@
 ## Iris_Flower_Species_Prediction
-This project focuses on using machine learning to predict the species of Iris flowers based on their petal and sepal measurements.
+This project focuses on using machine learning to predict the species of Iris flowers based on their petal and sepal measurements. The Iris flower species include Setosa, Versicolor, Virginica.
 
 ## Project Goals
 - Gain hands-on experience with machine learning
