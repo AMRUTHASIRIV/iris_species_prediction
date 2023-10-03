@@ -1,11 +1,5 @@
-#!/usr/bin/env python
-# coding: utf-8
 
-# # Data Collection
-
-# In[ ]:
-
-
+##Data Collection
 from sklearn.datasets import load_iris
 #load iris dataset
 iris=load_iris()
@@ -13,12 +7,7 @@ iris=load_iris()
 print(iris.data)
 print(iris.target)
 
-
-# # Data Preprocessing
-
-# In[ ]:
-
-
+##Data Preprocessing
 from sklearn.model_selection import train_test_split
 #split dataset into features and target
 X=iris.data
@@ -26,12 +15,7 @@ y=iris.target
 #split dataset into training set and testing set
 X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.3,random_state=42)
 
-
-# # Exploratory Data Analysis
-
-# In[ ]:
-
-
+##Exploratory Data Analysis
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
@@ -42,64 +26,31 @@ iris_df['species']=iris.target_names[iris.target]
 sns.pairplot(data=iris_df,hue='species')
 plt.show()
 
-
-# # Decision Tree Model
-
-# In[ ]:
-
-
+##Decision Tree Model
 from sklearn.tree import DecisionTreeClassifier
 #create a decision tree classifier
 clf=DecisionTreeClassifier(random_state=42)
 #train the model on training data
 clf.fit(X_train,y_train)
 
-
-# # Model Evaluation
-
-# In[ ]:
-
-
-from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+##Model Evaluation
+from sklearn.metrics import accuracy_score
 #make predictions on testing data
 y_pred=clf.predict(X_test)
 #calculate accuracy
 accuracy=accuracy_score(y_test,y_pred)
-#generate confusion matrix
-confusion=confusion_matrix(y_test,y_pred)
-#generate classification report
-report=classification_report(y_test,y_pred)
 print(f"Accuracy: {accuracy:.2f}")
-print("\nConfusion matrix:")
-print(confusion)
-print("\nClassification Report:")
-print(report)
 
-
-# # Code to use the model
-
-# In[ ]:
-
-
+##Code to use the model
 import joblib
 #save the model to a file
 joblib.dump(clf,'decision_tree_model.joblib')
 
-
-# # Using the model
-
-# In[ ]:
-
-
+##Using the model
 #load the trained model
 model=joblib.load('decision_tree_model.joblib')
 
-
-# # Code to take input from the user
-
-# In[ ]:
-
-
+##Code to take input from the user
 #define a dictionary to map numerical labels to species names
 species_mapping={0:'setosa',1:'versicolor',2:'virginica'}
 #preprocessing user input
@@ -145,9 +96,6 @@ def preprocess_user_input():
     return [sl,sw,pl,pw]      
 
 
-# In[ ]:
-
-
 def get_user_input():
     num_cases = int(input("Enter the number of cases to predict: "))
     predictions = []
@@ -160,12 +108,7 @@ def get_user_input():
     
     return predictions
 
-
-# # Code to make predictions on the given user input
-
-# In[ ]:
-
-
+##Code to make predictions on the given user input
 # Collect user input for multiple cases
 user_input_list = get_user_input()
 
@@ -174,4 +117,3 @@ for i, user_input in enumerate(user_input_list):
     predicted_class = model.predict([user_input])[0]#get the numerical label
     predicted_species=species_mapping[predicted_class]#map to species name
     print(f"Predicted Iris Species for Case {i+1}: {predicted_species}")
-
